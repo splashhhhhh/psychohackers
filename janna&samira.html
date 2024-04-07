@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Frame Template</title>
+    <style>
+        /* iPhone frame styles */
+        .iphone {
+            width: 300px;
+            height: 600px;
+            background-color: #000;
+            border-radius: 40px;
+            overflow: hidden;
+            margin: auto;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .screen {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+        }
+        /* Button styles */
+        .button {
+            display: inline-block;
+            background-color: #4F7942 ;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 10px;
+            text-decoration: none;
+        }
+        /* Image styles */
+        .app-image {
+            display: block;
+            margin: 50px auto;
+            max-width: 80%;
+            height: auto;
+        }
+
+        h1 {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; /* Specify the desired font family */
+            color: #4F7942; /* Specify the desired text color */
+            text-align: center; /* Center the heading text */
+            font-size: 17px; /* Specify the desired font size */
+            margin-top: 50px; /* Optional: Adjust top margin as needed */
+            margin-bottom: 20px; /* Optional: Adjust bottom margin as needed */
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        h2 {
+            font-family: Lato, sans-serif; /* Specify the desired font family */
+            color: #4F7942; /* Specify the desired text color */
+            text-align: left; /* Center the heading text */
+            font-size: 12px; /* Specify the desired font size */
+            margin-top: 73px; /* Optional: Adjust top margin as needed */
+            margin-bottom: 20px; /* Optional: Adjust bottom margin as needed */
+            margin-left: 10px;
+        }
+
+        h3 {
+            font-family: Lato, sans-serif; /* Specify the desired font family */
+            color: #4F7942; /* Specify the desired text color */
+            text-align: left; /* Center the heading text */
+            font-size: 12px; /* Specify the desired font size */
+            margin-left: 10px;
+            margin-bottom: 5px;
+     
+        }
+
+        .centered-button {
+            position: absolute;
+            top: 26%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: inline-block;
+            background-color: #4F7942 ;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 10px;
+            text-decoration: none;
+
+
+        }
+        
+        #category {
+            position: absolute;
+            top: 22%;
+            left: 27%;
+            transform: translate(-50%, -50%);
+            
+        }
+        
+        #filteredActivities {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 13px;
+        }
+
+    </style>
+
+    
+</head>
+<body>
+    <div class="iphone">
+        <div class="screen">
+            <!-- Your image goes here -->
+            <!-- <a href="#" class="button">Filter</a> -->
+        <h1>What kind of wellness practice can I help you find?</h1>
+
+            <script>
+                // Function to handle button click event
+                 function applyFilter() {
+                    var selectedCategory = document.getElementById('category').value;
+                    var filteredActivities = filterCategory(activities, selectedCategory);
+                    displayFilteredActivities(filteredActivities);
+                }
+                
+
+
+                // Filter function from previous development
+                function filterCategory(activities, c) {
+                    var filteredCategories = [];
+                    for (var i = 0; i < activities.length; i++) {
+                        var activity = activities[i];
+                        if (activity[2] === c) {
+                            filteredCategories.push(activity);
+                        }
+                    }
+                    return filteredCategories;
+                }
+        
+
+        
+                // Function to display filtered activities
+                function displayFilteredActivities(filteredActivities) {
+                    var container = document.getElementById('filteredActivities');
+                    container.innerHTML = ''; // Clear previous content
+                    filteredActivities.forEach(function(activity) {
+                        var listItem = document.createElement('li');
+                        listItem.textContent = activity[0]; // Assuming the first element is the activity name
+                        listItem.classList.add('activity');
+                        container.appendChild(listItem);
+                    }
+                    
+                    );
+                    
+                }
+            </script>
+        </head>
+        <h3>Select category:</h3>
+        <body>
+            <!-- Filter interface -->
+            <!--<label for="category">Select Category:</label>-->
+            <div>
+                <select id="category">
+                    
+                    <option value="Physical">Physical</option>
+                    <option value="Arts">Arts</option>
+                    <option value="Cognitive">Cognitive</option>
+                    <option value="Advocacy">Advocacy</option>
+                    <option value="Environmental">Environmental</option>
+                    <option value="Community outreach">Community outreach</option>
+                    
+                </select>
+            </div>
+            <div>
+                <!-- Button -->
+                
+            
+                <button class="centered-button" onclick="applyFilter()">Apply Filter</button>
+            </div>
+
+            <!-- Container to display filtered activities -->
+            <h2>You might enjoy: </h2> 
+            <div>
+                <ul id="filteredActivities"> </ul>
+            </div>
+            
+        
+            <!-- Your activities data -->
+            <script>
+                var activities = [
+                    ['POP Pilates Session', 'UBC Pilates Club', 'Physical', '4/19/2024', '6:30:00 PM', 'UBC Life Building'],
+                    ['Beach Volleyball', "UBC Arc'teryx", 'Physical ', '4/28/2024', '2:00:00 PM', 'Wreck Beach'],
+                    ['Sun-Run', 'Schneider Electric', 'Physical ', '6/26/2024', '12:30:00 PM', 'UBC Bookstore'],
+                    ['Journaling Workshop', 'SAP at UBC', 'Arts', '4/16/2024', '2:00:00 PM', 'Irving K. Barber Learning Centre'],
+                    ['Name Tag Coloring', 'UBCBeddieClub', 'Arts', '5/7/2024', '5:00:00 PM', 'AMS Student Nest'],
+                    ['Cookie Decorating', 'UBCPlanView', 'Arts', '3/18/2024', '2:30:00 PM', 'UBC Life Building'],
+                    ['YouCode Hackathon', 'WiCS & WiDS', 'Cognitive', '4/7/2024', '10:00:00 AM', '2350 Health Sciences Mall'],
+                    ['Make An AI Friend', 'UBC DarkVision', 'Cognitive', '5/5/2024', '1:00:00 PM', 'AMS Student Nest'],
+                    ['Mental Health Workshop', 'Orbis UBC', 'Cognitive', '9/18/2024', '4:00:00 PM', 'UBC Forest Sciences Centre (FSC)'],
+                    ['Beyond the Frontlines Movie Screening', 'UBC SPHR', 'Advocacy', '3/28/2024', '5:30:00 PM', '2260 West Mall'],
+                    ['Divestment Sit-in', 'UBC SPHR', 'Advocacy', '3/21/2024', '1:00:00 PM', 'Irving K. Barber Learning Centre'],
+                    ['South Africa & Beyond', 'UBC BSU', 'Advocacy', '2/28/2024', '6:00:00 PM', 'UBC Department of Geography'],
+                    ['Climate Justice, Art and Action Panel', 'UBC Climate Hub', 'Environmental', '2/26/2024', '6:00:00 PM', 'Hatch Art Gallery'],
+                    ['Stories of Change', 'UBC Sustainability', 'Environmental', '3/7/2024', '12:30:00 PM', '2260 West Mall'],
+                    ['Branching Out: Plant Propogation', 'Gardening Club', 'Environmental', '4/10/2024', '10:00:00 AM', 'UBC Botanical Garden'],
+                    ['ASK Friendship Society', 'UBC PATHS', 'Community outreach', '1/28/2024', '5:00:00 PM', 'AMS Student Nest'],
+                    ['Rooting for You: Toward Food Security', 'Gardening Club', 'Community outreach', '4/7/2024', '3:00:00 PM', 'UBC Farm'],
+                    ['Big Brothers/ Sisters', 'Community Leadership Club', 'Community outreach', '4/9/2024', '9:00:00 AM', 'Wesbrook Community Centre']
+                ];
+            </script>
+        </body>
+        <div>
+            <img src="map.webp" alt="App screenshot" class="app-image">
+        </div>
+            
+            <!-- Buttons 
+            <a href="#" class="button">Popular Spots</a>
+            <a href="#" class="button">Recommended Activities</a>
+            Add more buttons as needed -->
+        </div>
+    </div>
+</body>
+</html>
+
+<!--want to change map img with click to show map with pins; want to resize text to fit automatically-->
